@@ -1,10 +1,14 @@
 # Azure Downloader
 
-This is a windows service which you can run inside your web role to sync website contents with a file stored in blob storage. It holds some properties:
+This is a Windows service which you can run inside your Web Role to sync website contents with a file stored in Blob storage. It holds some properties:
 
++ Runs inside a Web Role, no need for additional worker role
 + File stored in blob storage is a Zip archive, so downloads and uploads are very fast
-+ Shared access url is used, rather than it connecting to Blob storage with admin rights
-+ File is checked with HEAD request and only downloaded if new ETag is present
++ Shared access url is used, rather than it connecting to Blob storage with admin rights, role itself can't change the blob or any of the files stored in a container
++ File is checked with HEAD request and only downloaded if new ETag is present, thus reduces bandwith out of an instance
++ Configurable refresh interval
+
+This is somewhat close to what was used for [Azure+](http://cloud.webspecies.co.uk/).
 
 ## Configuration
 
